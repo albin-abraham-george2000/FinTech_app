@@ -22,7 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -132,12 +135,12 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
     # and renames the files with unique names for each version to support long-term caching
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATICFILES_DIRS =[os.path.join(BASE_DIR,'ecomm/static')]
+STATICFILES_DIRS =[os.path.join(BASE_DIR,'static')]
 
 # MEDIA_URL  = '/media/'
 # MEDIA_ROOT = BASE_DIR/'media'
 
-STATICFILES_DIRS =['static']
+
 LOGIN_URL = "core_apps.userauths:sign-in"
 LOGOUT_REDIRECT = "core_apps.userauths:sign-in"
 
@@ -149,7 +152,4 @@ AUTH_USER_MODEL = 'userauths.User'
 
 ADMIN_URL = 'access2023/'
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
